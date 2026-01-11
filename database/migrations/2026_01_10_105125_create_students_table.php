@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->string('nim', 15)->primary();
+            $table->id();
+            $table->string('nim', 15);
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('name', 50);
             $table->boolean('is_active')->default(false);

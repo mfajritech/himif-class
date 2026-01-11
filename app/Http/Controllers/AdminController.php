@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coach;
 use App\Models\Course;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -74,7 +75,7 @@ class AdminController extends Controller
 
     // COACH
     public function manageCoach(){
-        $coaches = Coach::all();
+        $coaches = Coach::with('user')->all();
         return view('admin.coach.manage', [
             'coaches' => $coaches
         ]);
@@ -101,19 +102,19 @@ class AdminController extends Controller
             'coach' => $coach
         ]);
     }
-    public function editCoach(Request $request){
-        $data = $request->validate([
-            'id' => 'required',
-            'email' => 'required',
-            'name' => 'required',
-            'phone' => 'required'
-        ]);
-        $coach = Coach::find($request->id);
-        $coach->update($data);
-        return redirect()->route('get-admin-detail-coach', [
-            'id' => $coach->id
-        ]);
-    }
+    // public function editCoach(Request $request){
+    //     $data = $request->validate([
+    //         'id' => 'required',
+    //         'email' => 'required',
+    //         'name' => 'required',
+    //         'phone' => 'required'
+    //     ]);
+    //     $coach = Coach::find($request->id);
+    //     $coach->update($data);
+    //     return redirect()->route('get-admin-detail-coach', [
+    //         'id' => $coach->id
+    //     ]);
+    // }
     public function detailCoachView(Request $request){
         $coach = Coach::find($request->id);
         $courses = $coach->courses;
@@ -125,5 +126,19 @@ class AdminController extends Controller
     public function deleteCoach(Request $request){
         Coach::find($request->id)->delete();
         return redirect()->route('get-admin-manage-coach');
+    }
+
+    // STUDENT
+    public function manageStudent(){
+        $students = Student::with(relations: 'user')->get();
+        return view('admin.student.manage', [
+            'students' => $students
+        ]);
+    }
+    public function detailStudent(Request $request){
+        $student = Student::where('nim', $request->nim)->first();
+        return view('admin.student.detail', [
+            'student' => $student
+        ]);
     }
 }

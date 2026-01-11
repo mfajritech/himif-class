@@ -11,5 +11,6 @@
     <a href="{{ route('get-logout') }}">LOGOUT</a>
     <a href="{{ route('get-admin-manage-course') }}">manage courses</a>
     <a href="{{ route('get-admin-manage-coach') }}">manage coaches</a>
+    <a href="{{ route('get-admin-manage-student') }}">manage students</a>
 </body>
 </html>

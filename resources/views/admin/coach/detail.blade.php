@@ -31,7 +31,7 @@
         <input type="hidden" name="id" value="{{ $coach->id }}">
         <button type="submit">hapus</button>
     </form>
-    <a href="{{ route('get-admin-edit-coach', ['id' => $coach->id]) }}">edit</a>
+    {{-- <a href="{{ route('get-admin-edit-coach', ['id' => $coach->id]) }}">edit</a> --}}
 
     <h1>courses</h1>
     <table>

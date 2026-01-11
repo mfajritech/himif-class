@@ -38,6 +38,8 @@ class authController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         $user->student()->create($data);
+
+        return redirect()->route('get-login');
     }
     public function loginView(){
         return view('auth.login');
