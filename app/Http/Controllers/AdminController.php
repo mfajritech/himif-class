@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     // COURSE
     public function manageCourse(){
-        $courses = Course::where('end_date', null)->get();
+        $courses = Course::with('coach')->where('end_date', null)->get();
         return view('admin.course.manage', [
             'courses' => $courses
         ]);
@@ -40,6 +40,37 @@ class AdminController extends Controller
         Course::create($data);
         return redirect()->route('get-admin-manage-course');
     }
+    public function editCourseView(Request $request){
+        $course = Course::find($request->id);
+        $coaches = Coach::all();
+        return view('admin.course.edit', [
+            'course' => $course,
+            'coaches' => $coaches
+        ]);
+    }
+    public function editCourse(Request $request){
+        $data = $request->validate([
+            'id' => 'required',
+            'is_active' => 'required',
+            'title' => 'required',
+            'coach_id' => 'required',
+            'description' => 'required',
+            'total_meetings' => 'required',
+            'meeting_duration' => 'required',
+            'schedule_day' => 'required'
+        ]);
+        $course = Course::find($data['id']);
+        $course->update($data);
+        return redirect()->route('get-admin-detail-course', [
+            'id' => $course->id
+        ]);
+    }
+    public function detailCourseView(Request $request){
+        $course = Course::find($request->id);
+        return view('admin.course.detail', [
+            'course' => $course,
+        ]);
+    }
 
     // COACH
     public function manageCoach(){
@@ -62,6 +93,37 @@ class AdminController extends Controller
 
         $user = User::create($data);
         $user->coach()->create($data);
-        return redirect()->route('admin.get-admin-manage-coach');
+        return redirect()->route('get-admin-manage-coach');
+    }
+    public function editCoachView(Request $request){
+        $coach = Coach::find($request->id);
+        return view('admin.coach.edit', [
+            'coach' => $coach
+        ]);
+    }
+    public function editCoach(Request $request){
+        $data = $request->validate([
+            'id' => 'required',
+            'email' => 'required',
+            'name' => 'required',
+            'phone' => 'required'
+        ]);
+        $coach = Coach::find($request->id);
+        $coach->update($data);
+        return redirect()->route('get-admin-detail-coach', [
+            'id' => $coach->id
+        ]);
+    }
+    public function detailCoachView(Request $request){
+        $coach = Coach::find($request->id);
+        $courses = $coach->courses;
+        return view('admin.coach.detail', [
+            'coach' => $coach,
+            'courses' => $courses
+        ]);
+    }
+    public function deleteCoach(Request $request){
+        Coach::find($request->id)->delete();
+        return redirect()->route('get-admin-manage-coach');
     }
 }

@@ -39,9 +39,16 @@ Route::middleware('role:admin')->prefix('admin')->group(function(){
     Route::get('manage-course', [AdminController::class, 'manageCourse'])->name('get-admin-manage-course');
     Route::get('add-course', [AdminController::class, 'addCourseView'])->name('get-admin-add-course');
     Route::post('add-course', [AdminController::class, 'addCourse'])->name('post-admin-add-course');
+    Route::get('detail-course', [AdminController::class, 'detailCourseView'])->name('get-admin-detail-course');
+    Route::get('edit-course', [AdminController::class, 'editCourseView'])->name('get-admin-edit-course');
+    Route::post('edit-course', [AdminController::class, 'editCourse'])->name('post-admin-edit-course');
 
     Route::get('manage-coach', [AdminController::class, 'manageCoach'])->name('get-admin-manage-coach');
     Route::get('add-coach', [AdminController::class, 'addCoachView'])->name('get-admin-add-coach');
     Route::post('add-coach', [AdminController::class, 'addCoach'])->name('post-admin-add-coach');
+    Route::get('edit-coach', [AdminController::class, 'editCoachView'])->name('get-admin-edit-coach');
+    Route::post('edit-coach', [AdminController::class, 'editCoach'])->name('post-admin-edit-coach');
+    Route::get('detail-coach', [AdminController::class, 'detailCoachView'])->name('get-admin-detail-coach');
+    Route::post('delete-coach', [AdminController::class, 'deleteCoach'])->name('post-admin-delete-coach');
 
 });

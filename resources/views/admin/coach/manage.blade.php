@@ -30,6 +30,7 @@
                     <td>{{ $coach->user->email }}</td>
                     <td>{{ $coach->name }}</td>
                     <td>{{ $coach->phone }}</td>
+                    <td><a href="{{ route('get-admin-detail-coach', ['id' => $coach->id]) }}">detail</a></td>
                 </tr>
                 @endforeach
             </tbody>

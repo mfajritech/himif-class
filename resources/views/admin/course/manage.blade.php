@@ -27,6 +27,7 @@
                     <td>{{ $course->title }}</td>
                     <td>{{ $course->coach->name }}</td>
                     <td>{{ $course->total_meetings }}</td>
+                    <td><a href="{{ route('get-admin-detail-course', ['id' => $course->id]) }}">detail</a></td>
                 </tr>
                 @endforeach
             </tbody>
