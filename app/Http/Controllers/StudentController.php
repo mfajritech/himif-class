@@ -10,7 +10,7 @@ class StudentController extends Controller
 {
     public function index(){
         $user = Auth::user();
-        $courses = $user->course
+        $courses = $user->course;
         return view('student.dashboard');
     }
 }

@@ -75,7 +75,7 @@ class AdminController extends Controller
 
     // COACH
     public function manageCoach(){
-        $coaches = Coach::with('user')->all();
+        $coaches = Coach::with('user')->get();
         return view('admin.coach.manage', [
             'coaches' => $coaches
         ]);
