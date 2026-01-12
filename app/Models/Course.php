@@ -25,8 +25,8 @@ class Course extends Model
     public function coach():BelongsTo{
         return $this->belongsTo(Coach::class, 'coach_id', 'id');
     }
-    public function enrollment():HasOne{
-        return $this->hasOne(Enrollment::class, 'course_id', 'id');
+    public function enrollment():HasMany{
+        return $this->hasMany(Enrollment::class, 'course_id', 'id');
     }
     public function meetings():HasMany{
         return $this->hasMany(CourseMeeting::class, 'course_id', 'id');

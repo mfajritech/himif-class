@@ -28,6 +28,13 @@ Route::get('logout', [authController::class, 'logout'])->name('get-logout');
 
 Route::middleware('role:student')->prefix('student')->group(function(){
     Route::get('dashboard', [StudentController::class, 'index'])->name('student-dashboard');
+
+    Route::get('my-courses', [StudentController::class,'myCoursesView'])->name('get-student-my-courses');
+    Route::get('courses', [StudentController::class,'coursesView'])->name('get-student-courses');
+    Route::get('detail-course', [StudentController::class,'detailCourse'])->name('get-student-detail-courses');
+    Route::get('enroll-course', [StudentController::class,'enrollView'])->name('get-student-enroll-courses');
+    Route::post('enroll-course', [StudentController::class,'enroll'])->name('post-student-enroll-courses');
+
 });
 
 Route::middleware('role:coach')-> prefix('coach')->group(function(){
