@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Coach | HIMIF Class</title>
+@extends('admin.template')
 
-   
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
-<body class="bg-light py-5">
+@section('content')
 
 <div class="container">
 
@@ -24,7 +13,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-6">
 
-    
+
             @if ($errors->any())
                 <div class="alert alert-danger shadow-sm rounded-3">
                     <ul class="mb-0">
@@ -35,14 +24,14 @@
                 </div>
             @endif
 
-         
+
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-4 p-md-5">
 
                     <form action="{{ route('post-admin-add-coach') }}" method="POST">
                         @csrf
 
-                   
+
                         <div class="mb-3">
                             <label for="name" class="form-label fw-semibold">
                                 <i class="bi bi-person-fill me-1"></i>Nama Coach
@@ -55,7 +44,7 @@
                                    value="{{ old('name') }}">
                         </div>
 
-              
+
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold">
                                 <i class="bi bi-envelope-fill me-1"></i>Email
@@ -68,7 +57,7 @@
                                    value="{{ old('email') }}">
                         </div>
 
-                    
+
                         <div class="mb-4">
                             <label for="phone" class="form-label fw-semibold">
                                 <i class="bi bi-telephone-fill me-1"></i>Nomor Telepon
@@ -81,7 +70,7 @@
                                    value="{{ old('phone') }}">
                         </div>
 
-                      
+
                         <div class="d-flex justify-content-end">
                             <button type="submit"
                                     class="btn btn-primary rounded-pill fw-semibold px-4">
@@ -101,4 +90,5 @@
 
 </body>
 </html>
- 
+
+@endsection

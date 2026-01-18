@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Detail Course | HIMIF Class</title>
 
-   
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body class="bg-light py-5">
 
 <div class="container">
 
-  
+
     <div class="text-center mb-5">
         <i class="bi bi-journal-bookmark-fill fs-1 text-primary"></i>
         <h3 class="fw-bold mt-2">Detail Course</h3>
@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-7">
 
-         
+
             <div class="card shadow-lg border-0 rounded-4 mb-4">
                 <div class="card-body p-4 p-md-5">
 
@@ -113,7 +113,7 @@
                 </div>
             </div>
 
-         
+
             <div class="d-flex justify-content-end">
                 <a href="{{ route('get-admin-edit-course', ['id' => $course->id]) }}"
                    class="btn btn-warning rounded-pill fw-semibold">
@@ -128,3 +128,4 @@
 
 </body>
 </html>
+@endsection

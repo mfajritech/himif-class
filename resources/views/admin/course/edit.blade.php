@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Edit Course | HIMIF Class</title>
+@extends('admin.template')
 
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
- 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
-<body class="bg-light py-5">
+@section('content')
 
 <div class="container">
 
@@ -26,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-7">
 
-        
+
             @if ($errors->any())
                 <div class="alert alert-danger shadow-sm rounded-3">
                     <ul class="mb-0">
@@ -37,7 +25,7 @@
                 </div>
             @endif
 
-        
+
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-4 p-md-5">
 
@@ -55,9 +43,9 @@
                                    readonly>
                         </div>
 
-                      
+
                         <div class="mb-3">
-                            
+
                             <input type="hidden"
                                    name="is_active"
                                    class="form-control rounded-3 bg-light"
@@ -76,7 +64,7 @@
                                    value="{{ $course->title }}">
                         </div>
 
-                    
+
                         <div class="mb-3">
                             <label for="coach_id" class="form-label fw-semibold">
                                 <i class="bi bi-person-video3 me-1"></i>Coach
@@ -95,7 +83,7 @@
                             </select>
                         </div>
 
-                      
+
                         <div class="mb-3">
                             <label for="description" class="form-label fw-semibold">
                                 <i class="bi bi-card-text me-1"></i>Deskripsi
@@ -106,7 +94,7 @@
                                       class="form-control rounded-3">{{ $course->description }}</textarea>
                         </div>
 
-                      
+
                         <div class="mb-3">
                             <label for="total_meetings" class="form-label fw-semibold">
                                 <i class="bi bi-collection me-1"></i>Total Pertemuan
@@ -118,7 +106,7 @@
                                    value="{{ $course->total_meetings }}">
                         </div>
 
-                       
+
                         <div class="mb-3">
                             <label for="meeting_duration" class="form-label fw-semibold">
                                 <i class="bi bi-clock-history me-1"></i>Durasi Pertemuan (menit)
@@ -130,7 +118,7 @@
                                    value="{{ $course->meeting_duration }}">
                         </div>
 
-                        
+
                         <div class="mb-4">
                             <label for="schedule_day" class="form-label fw-semibold">
                                 <i class="bi bi-calendar-week me-1"></i>Jadwal Pertemuan
@@ -141,7 +129,7 @@
                                       rows="2">{{ $course->schedule_day }}</textarea>
                         </div>
 
-                        
+
                         <div class="d-flex justify-content-between">
                             <a href="{{ route('get-admin-detail-course', ['id' => $course->id]) }}"
                                class="btn btn-outline-secondary rounded-pill">

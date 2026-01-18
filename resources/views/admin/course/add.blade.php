@@ -1,22 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Course | HIMIF Class</title>
+@extends('admin.template')
 
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
- 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-</head>
-<body class="bg-light py-5">
+@section('content')
 
 <div class="container">
 
-   
+
     <div class="text-center mb-5">
         <i class="bi bi-plus-circle-fill fs-1 text-primary"></i>
         <h3 class="fw-bold mt-2">Tambah Course</h3>
@@ -26,7 +14,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-7">
 
-         
+
             @if ($errors->any())
                 <div class="alert alert-danger shadow-sm rounded-3">
                     <ul class="mb-0">
@@ -37,14 +25,14 @@
                 </div>
             @endif
 
-         
+
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-4 p-md-5">
 
                     <form action="{{ route('post-admin-add-course') }}" method="POST">
                         @csrf
 
-                      
+
                         <div class="mb-3">
                             <label for="title" class="form-label fw-semibold">
                                 <i class="bi bi-journal-text me-1"></i>Judul Course
@@ -55,7 +43,7 @@
                                    value="{{ old('title') }}">
                         </div>
 
-                       
+
                         <div class="mb-3">
                             <label for="coach_id" class="form-label fw-semibold">
                                 <i class="bi bi-person-video3 me-1"></i>Coach
@@ -71,7 +59,7 @@
                             </select>
                         </div>
 
-                     
+
                         <div class="mb-3">
                             <label for="description" class="form-label fw-semibold">
                                 <i class="bi bi-card-text me-1"></i>Deskripsi
@@ -82,7 +70,7 @@
                                       placeholder="Deskripsi course">{{ old('description') }}</textarea>
                         </div>
 
-                     
+
                         <div class="mb-3">
                             <label for="total_meetings" class="form-label fw-semibold">
                                 <i class="bi bi-collection me-1"></i>Total Pertemuan
@@ -93,7 +81,7 @@
                                    value="{{ old('total_meetings') }}">
                         </div>
 
-                    
+
                         <div class="mb-3">
                             <label for="meeting_duration" class="form-label fw-semibold">
                                 <i class="bi bi-clock-history me-1"></i>Durasi Pertemuan (menit)
@@ -104,7 +92,7 @@
                                    value="{{ old('meeting_duration') }}">
                         </div>
 
-                    
+
                         <div class="mb-4">
                             <label for="schedule_day" class="form-label fw-semibold">
                                 <i class="bi bi-calendar-week me-1"></i>Jadwal Pertemuan
@@ -115,7 +103,7 @@
                                       placeholder="Contoh: Senin & Rabu">{{ old('schedule_day') }}</textarea>
                         </div>
 
-                      
+
                         <div class="d-flex justify-content-end">
                             <button type="submit"
                                     class="btn btn-primary rounded-pill fw-semibold px-4">
@@ -135,3 +123,5 @@
 
 </body>
 </html>
+
+@endsection
