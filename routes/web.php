@@ -64,5 +64,7 @@ Route::middleware('role:admin')->prefix('admin')->group(function(){
 
     Route::get('enrollment', [AdminController::class, 'enrollmentView'])->name('get-admin-enrollment');
     Route::get('detail-enrollment', [AdminController::class, 'enrollmentDetail'])->name('get-admin-detail-enrollment');
+    Route::get('accept-enrollment', [AdminController::class, 'enrollmentAccept'])->name('get-admin-accept-enrollment');
+    Route::get('reject-enrollment', [AdminController::class, 'enrollmentReject'])->name('get-admin-reject-enrollment');
 
 });

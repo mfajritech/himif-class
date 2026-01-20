@@ -157,4 +157,16 @@ class AdminController extends Controller
             'page' => 'enrollment'
         ]);
     }
+    public function enrollmentAccept(Request $request){
+        $enrollment = Enrollment::find($request->id);
+        $enrollment->status = 'accepted';
+        $enrollment->save();
+
+        return redirect()->back();
+    }
+    public function enrollmentReject(Request $request){
+        $enrollment = Enrollment::find($request->id);
+        $enrollment->delete();
+        return redirect()->route('get-admin-enrollment');
+    }
 }
