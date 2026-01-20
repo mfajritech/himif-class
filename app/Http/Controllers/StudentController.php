@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Enrollment;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,9 @@ class StudentController extends Controller
     public function myCoursesView(){
         $user = Auth::user();
         $enrollments = $user->student->enrollments;
+        $enrollments = Enrollment::where('student_id', $user->student->id)
+                                        ->where('status', 'accepted')
+                                        ->get();
         $myCourses = [];
         foreach($enrollments as $enrollment){
             $myCourses[] = Course::with(['coach', 'enrollment'])->find($enrollment->course_id);
