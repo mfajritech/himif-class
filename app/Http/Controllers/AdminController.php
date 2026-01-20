@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Coach;
 use App\Models\Course;
+use App\Models\Enrollment;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -139,6 +140,21 @@ class AdminController extends Controller
         $student = Student::where('nim', $request->nim)->first();
         return view('admin.student.detail', [
             'student' => $student
+        ]);
+    }
+    public function enrollmentView(Request $request){
+        $enrollments = Enrollment::with(['course', 'student'])->where('status', 'pending')->get();
+        return view('admin.enrollment.manage', [
+            'enrollments' => $enrollments,
+            'page' => 'enrollment'
+        ]);
+    }
+    public function enrollmentDetail(Request $request){
+        $id = $request->id;
+        $enrollment = Enrollment::with(['course', 'student'])->find($id);
+        return view('admin.enrollment.detail', [
+            'enrollment' => $enrollment,
+            'page' => 'enrollment'
         ]);
     }
 }

@@ -18,6 +18,12 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
 
                 <li class="nav-item">
+                    <a class="nav-link text-white" href="{{ route('student-dashboard') }}">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('get-student-my-courses') }}">
                         Kursus Saya
                     </a>
@@ -26,6 +32,13 @@
                 <li class="nav-item">
                     <a class="nav-link text-white" href="{{ route('get-student-courses') }}">
                         Kursus
+                    </a>
+                </li>
+
+               <li class="nav-item">
+                    <a class="nav-link bg-white text-dark fw-bold ms-4 pb-1 pt-0 rounded-pill fw-semibold"
+                       href="{{ route('get-logout') }}">
+                        Logout
                     </a>
                 </li>
 

@@ -17,21 +17,35 @@
         <div class="collapse navbar-collapse" id="adminNavbar">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
 
+                @php
+                    if(isset($page)){
+                        if($page == 'course') $course = true;
+                        else if($page == 'coach') $coach = true;
+                        else if($page == 'student') $student = true;
+                    }
+                @endphp
+
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('get-admin-manage-course') }}">
+                    <a class="nav-link text-white {{ isset($course) ? 'fw-bold' : '' }}" href="{{ route('get-admin-manage-course') }}">
                         Manage Courses
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('get-admin-manage-coach') }}">
+                    <a class="nav-link text-white {{ isset($coach) ? 'fw-bold' : '' }}" href="{{ route('get-admin-manage-coach') }}">
                         Manage Coaches
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ route('get-admin-manage-student') }}">
+                    <a class="nav-link text-white {{ isset($student) ? 'fw-bold' : '' }}" href="{{ route('get-admin-manage-student') }}">
                         Manage Students
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white {{ isset($enrollment) ? 'fw-bold' : '' }}" href="{{ route('get-admin-enrollment') }}">
+                        Manage Enrollments
                     </a>
                 </li>
 

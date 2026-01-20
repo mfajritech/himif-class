@@ -62,5 +62,7 @@ Route::middleware('role:admin')->prefix('admin')->group(function(){
     Route::get('manage-student', [AdminController::class, 'manageStudent'])->name('get-admin-manage-student');
     Route::get('detail-student', [AdminController::class, 'detailStudent'])->name('get-admin-detail-student');
 
+    Route::get('enrollment', [AdminController::class, 'enrollmentView'])->name('get-admin-enrollment');
+    Route::get('detail-enrollment', [AdminController::class, 'enrollmentDetail'])->name('get-admin-detail-enrollment');
 
 });
