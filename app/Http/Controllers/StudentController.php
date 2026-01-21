@@ -28,12 +28,21 @@ class StudentController extends Controller
         $enrollments = Enrollment::where('student_id', $user->student->id)
                                         ->where('status', 'accepted')
                                         ->get();
+        $enrollPending = Enrollment::where('student_id', $user->student->id)
+                                        ->where('status', 'pending')
+                                        ->get();
         $myCourses = [];
         foreach($enrollments as $enrollment){
             $myCourses[] = Course::with(['coach', 'enrollment'])->find($enrollment->course_id);
         }
+        $myCoursesPending = [];
+        foreach($enrollPending as $enrollment){
+            $myCoursesPending[] = Course::with(['coach', 'enrollment'])->find($enrollment->course_id);
+        }
+
         return view('student.course.myCourses', [
             'myCourses' => $myCourses,
+            'myCoursesPending' => $myCoursesPending,
             'enrollments' => $enrollments
         ]);
     }

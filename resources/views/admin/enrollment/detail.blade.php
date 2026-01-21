@@ -15,7 +15,7 @@
             </p>
         </div>
 
-        <a href="{{ url()->previous() }}" class="btn btn-outline-secondary">
+        <a href="{{ route('get-admin-enrollment') }}" class="btn btn-outline-secondary">
             ← Kembali
         </a>
     </div>
@@ -32,7 +32,7 @@
                     <span class="badge bg-warning text-dark px-3 py-2">
                         Menunggu Persetujuan
                     </span>
-                @elseif ($enrollment->status === 'approved')
+                @elseif ($enrollment->status === 'accepted')
                     <span class="badge bg-success px-3 py-2">
                         Disetujui
                     </span>

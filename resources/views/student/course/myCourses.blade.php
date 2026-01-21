@@ -32,7 +32,6 @@
             <!-- COURSE TABLE -->
             <div class="card border-0 shadow-sm">
                 <div class="card-body">
-
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
                             <thead class="table-light">
@@ -44,14 +43,6 @@
                             </thead>
                             <tbody>
 
-                                @php
-                                    // mapping status enrollment by course_id (lebih bersih)
-                                    $statusMap = [];
-                                    foreach ($enrollments as $enroll) {
-                                        $statusMap[$enroll->course_id] = $enroll->status;
-                                    }
-                                @endphp
-
                                 @foreach ($myCourses as $course)
                                     <tr>
                                         <td class="fw-semibold">
@@ -60,28 +51,41 @@
                                         <td>
                                             {{ $course->coach->name }}
                                         </td>
-                                        <td>
-                                            @php
-                                                $status = $statusMap[$course->id] ?? 'unknown';
-                                            @endphp
-
-                                            @if ($status === 'active')
-                                                <span class="badge bg-success">Aktif</span>
-                                            @elseif ($status === 'completed')
-                                                <span class="badge bg-primary">Selesai</span>
-                                            @elseif ($status === 'pending')
-                                                <span class="badge bg-warning text-dark">Menunggu</span>
-                                            @else
-                                                <span class="badge bg-secondary">Tidak Diketahui</span>
-                                            @endif
-                                        </td>
+                                        <td><span class="badge bg-success">Aktif</span></td>
                                     </tr>
                                 @endforeach
 
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Coach</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
+                                @foreach ($myCoursesPending as $course)
+                                    <tr>
+                                        <td class="fw-semibold">
+                                            {{ $course->title }}
+                                        </td>
+                                        <td>
+                                            {{ $course->coach->name }}
+                                        </td>
+                                        <td><span class="badge bg-warning">Menunggu</span></td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         @endif
